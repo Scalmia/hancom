@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자기 소개</title>
+    </head>
+    <body>
+        <header>
+            <h1 id="top"><b>김정현 소개서</b></h1>
+            <nav>
+                <a href="#about">소개</a>
+                <a href="#skill">기술</a>
+                <a href="#contact">연락처</a>
+                <a href="#more">더보기</a>
+                <a href="#schedule">일정</a>
+                <a href="#cooperation">협업</a>
+            </nav>
+        </header>
+
+        <main>
+            <img src="../images/Devil.png"><br>
+            <span style="font-size: 14px; color:lch(20.37% 39.88 342.92);">자화상</span> 
+            <section id="about">
+                <h2>소개</h2>
+                <p>저는 성남시 거주 중인 프로그래머 <em><b>김정현</b></em>&nbsp; 입니다.</p>
+                <iframe width="320" height="220"
+                src="https://www.google.com/maps?q=성남시&amp;output=embed"></iframe>
+            </section>
+            <section id="skill">
+                <h2>사용하는 기술</h2>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                </ul>
+            </section>
+            <section id="contact">
+                <h2>연락처</h2>
+                <p>이메일: kimjeonghyun@example.com</p>
+                <p>전화: 010-9999-9999</p>
+            </section>
+            <section id="more">
+                <h2>더보기</h2>
+                <p>저에 대한 더 많은 정보를 원하시면 아래 링크를 클릭하세요.</p>
+                <a href="https://github.com/" target="_blank">GitHub 프로필</a><br>
+                <a href="https://velog.io/" target="_blank">Velog 블로그</a>
+            </section>
+            <section id="schedule">
+                <h2>일정</h2>
+                <p><u>저는 다음과 같은 일정으로 활동하고 있습니다.</u></p>
+                <table border="2">
+                    <thead>
+                        <tr>
+                            <th colspan="2">날짜</th>
+                            <th>활동</th>
+                            <!-- <th>비고</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2"><s>2026-01-01</s></td>
+                            <td><s>새해맞이 코딩</s></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">2026-02-14</td>
+                            <td>발렌타인데이 프로젝트</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">2026-03-01</td>
+                            <td>삼일절 기념 개발</td>
+                        </tr>
+                </table>
+            </section>
+            <section id="cooperation">
+                <h2>협업</h2>
+                <article><q><em>저는 다양한 사람들과 협업하여 프로젝트를 성공적으로 완료해왔습니다. 같은 목표를 가지고 정진할 이를 찾습니다.</em></q></article><br>
+                <form action="/submit" method="post">
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="message">메시지:</label><br>
+                    <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                    <h3>분야를 선택해주세요.</h3>
+                    <label><input type="checkbox" name="tag" value="fe"> 프론트엔드</label>
+                    <label><input type="checkbox" name="tag" value="be"> 백엔드</label>
+                    <label><input type="checkbox" name="tag" value="full"> 풀스택</label>
+                    <label><input type="checkbox" name="tag" value="qt" style="transform: scale(0.6);"> <span style="font-size:8px;">백수</span></label><br><br>
+                    <button type="submit">보내기</button><br><br>
+                </form>
+            </section>
+        </main>
+        <hr>
+        <a href="#top"><div style="color:aqua; font-size:14px;">맨 위로</div></a>
+        <footer>
+            <p><small>&copy; 2026 김정현. All rights reserved.</small></p>
+        </footer>
+    </body>
+</html>
