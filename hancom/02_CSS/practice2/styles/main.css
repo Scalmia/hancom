@@ -1,0 +1,27 @@
+body {background-color: darkgrey; font-family: Arial, sans-serif; margin: 10px; padding: 0;}
+
+h1 {color: navy; margin-top: 20px; text-align: center;}
+p {color: rgb(136 36 36 / 45.9%);}
+
+#box {
+    background-color: rgba(210, 241, 240, 0.8);
+    border: 10px solid #ccc;
+    padding: 10px;
+    margin: 20px auto;
+    width: 80%;
+}
+.flex {
+    display: flex;
+    /* justify-content: space-between;
+    align-items: center; */
+    gap: 10px;
+    list-style: none;
+}
+.special {color: orange; font-weight: bold;}
+
+a:link {color: blue; text-decoration: none;}
+a:visited {color: purple; text-decoration: none;}
+a:hover {color: red; text-decoration: underline;}
+a:active {color: green; text-decoration: underline;}
+
+li em {color: rgb(255 145 0); font-style: italic;}

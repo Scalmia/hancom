@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>테이블과 폼</title>
+    </head>
+    <body>
+        <h1>테이블 연습</h1>
+        <table border="10">
+            <tr>
+                <th colspan="2">이름</th>
+                <th>나이</th>
+                <th>성별</th>
+                <td>비고</td>
+            </tr>
+            <tr>
+                <td rowspan="2">박정현</td>
+                <td>30</td>
+                <td>남자</td>
+                <th>비고</th>
+            </tr>
+            <tr>
+                <td>비고</td>
+            </tr>
+        </table>
+
+        <h1>폼 연습</h1>
+        <form>
+            <label>이름 : <input type="text" placeholder="이름 입력"></label><br>
+            <label>나이 : <input type="number" placeholder="나이 입력"></label><br>
+            <button type="submit">제출</button>
+            <span style="font-size:10px">이름과 나이를 입력하고 제출 버튼을 클릭하세요.</span>
+        </form>
+    </body>
+</html>
