@@ -1,0 +1,139 @@
+:root {
+    --main-color: linear-gradient(135deg, #3cc6f0, #785cf6);
+    --gap: 12px;
+}
+
+body {
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 21fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: rgb(153, 15, 15);
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 50px 100px;
+    border-radius: 10px; 
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(200, 255, 234);
+    color:aliceblue;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card2 {
+    flex: 1;
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+    padding: 50px 40px;
+    border-radius: 10px; 
+}
+
+@media (max-width: 600px) {
+    .box {
+        flex-direction: column;
+    }
+}
+
+.row {
+    display: flex;
+    gap: var(--gap);
+}
+
+.btn {
+    margin-top: 20px;
+    background: var(--main-color);
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.up {
+    width: 300px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-color);
+    color: aliceblue;
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+
+    border-radius: 20%;
+    box-shadow: 0 6px 10px #3cc6f0, 0 0 20px #3cc6f0, 0 0 30px #3cc6f0, 0 0 40px #8b5cf6, 0 0 50px #8b5cf6, 0 0 60px #8b5cf6;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.up:hover {
+    opacity: 0.8;
+    transform: translateY(-10px);
+    box-shadow: 0 16px 20px #3cc6f0, 0 0 30px #3cc6f0, 0 0 40px #3cc6f0, 0 0 50px #8b5cf6, 0 0 60px #8b5cf6, 0 0 70px #8b5cf6;
+}
+
+.star-title {
+    color: white;
+    font-size: 1rem;
+}
+.star-title::before {
+    content: "★";
+    color: goldenrod;
+}
+
+.quote {
+    color: white;
+    font-size: 1rem;
+    font-style: italic;
+}
+.quote::before {
+    content: "“";
+    color:blueviolet;
+    font-weight: bold;
+}
+.quote::after {
+    content: "”";
+    color:blueviolet;
+    font-weight: bold;
+}
+
+.underline-deco {
+    position: relative;
+    display: inline-block;
+    color: rgb(255, 16, 163);
+}
+.underline-deco::after {
+    content: "";
+    display: block;
+    position: absolute;
+    margin-top: 3px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #f03cab, #785cf6);
+}

@@ -1,0 +1,24 @@
+body {
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+.box {
+    align-items: center;
+    background-color: rgb(104 255 197);
+    border-radius: 10px;
+    color:aliceblue;
+    display: flex;
+    font-size: 3rem;
+    height: 200px;
+    justify-content: center;
+    transition: transform 1s ease;
+    width: 200px;
+}
+
+.box:hover {
+    transform: rotate(45deg) scale(1.2);
+}

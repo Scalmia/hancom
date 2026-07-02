@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: linear-gradient(135deg, #3cc6f0, #785cf6);
+    --sub-color: linear-gradient(135deg, #ec4899, #8b5cf6);
+    --ink: rgb(255, 255, 255);
+    --gap: 20px;
+}
+
+body {
+    background-color: rgb(150, 142, 255);
+    color: var(--ink);
+    font-family: Diphylleia, Arial, Helvetica, sans-serif;
+    height: 1500px;
+}
+
+header#menu {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+    padding: 20px;
+    list-style: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: var(--main-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.nav-list a:link    { color: var(--ink); text-decoration: none; }
+.nav-list a:visited { color: purple; text-decoration: none; }
+.nav-list a:hover    { color: rgb(255, 0, 0); text-decoration: underline; }
+.nav-list a:active   { color: rgb(255, 51, 187); text-decoration: underline; }
+
+#profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.profile-image {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    width: 200px;
+    /* height: 200px; */
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgb(197, 248, 255);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+#skills-section {
+    scroll-margin-top: 72px; /* header가 컨텐츠 내용을 가리는 현상을 방지 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+    margin-top: 20px;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.card {
+    background: var(--sub-color);
+    color: var(--ink);
+    font-weight: 1000;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
