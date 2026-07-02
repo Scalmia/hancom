@@ -7,6 +7,7 @@
 :root {
     --main-color: linear-gradient(135deg, #3cc6f0, #785cf6);
     --sub-color: linear-gradient(135deg, #ec4899, #8b5cf6);
+    --title-color: rgb(47, 183, 236);
     --ink: rgb(255, 255, 255);
     --gap: 20px;
 }
@@ -36,9 +37,9 @@ header#menu {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .nav-list a:link    { color: var(--ink); text-decoration: none; }
-.nav-list a:visited { color: purple; text-decoration: none; }
+.nav-list a:visited { color: rgb(103, 37, 146); text-decoration: none; }
 .nav-list a:hover    { color: rgb(255, 0, 0); text-decoration: underline; }
-.nav-list a:active   { color: rgb(255, 51, 187); text-decoration: underline; }
+.nav-list a:active   { color: rgb(250, 177, 19); text-decoration: underline; }
 
 #profile {
     display: flex;
@@ -57,7 +58,22 @@ header#menu {
     border-radius: 50%;
     border: 4px solid rgb(197, 248, 255);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-
+}
+.title {
+    text-shadow: 0 0 10px var(--title-color), 0 0 20px var(--title-color), 0 0 30px rgba(250, 144, 56, 0.5);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.title::before {
+    content: "“";
+    color:rgb(159, 245, 240);
+    font-weight: bold;
+}
+.title::after {
+    content: "”";
+    color:rgb(159, 245, 240);
+    font-weight: bold;
 }
 
 #skills-section {
