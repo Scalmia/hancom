@@ -1,0 +1,1 @@
+link = scalmia-hancom.netlify.app

@@ -11,9 +11,9 @@
       <nav class="nav">
         <ul class="nav-list">
           <li><a href="#">홈</a></li>
-          <li><a href="#">소개</a></li>
+          <li><a href="#profile">소개</a></li>
           <li><a href="#skills-section">기술 스택</a></li>
-          <li><a href="#">연락처</a></li>
+          <li><a href="#review">정리</a></li>
         </ul>
       </nav>
 
@@ -37,8 +37,439 @@
         <li class="card">React</li>
       </ul>
     </section>
-  </body>
-  </html>
-    </ul>
+
+    <section id="review">
+      <h2 class="review-title">정리 노트</h2>
+
+      <details class="note">
+        <summary>마음에 드는 웹 사이트 분석</summary>
+        <iframe src="https://www.reactbits.dev/backgrounds/galaxy" width="100%" height="600" title="우주"></iframe>
+
+        <p>이 웹사이트 효과는 일반 이미지나 GIF가 아닌, ogl 이라는 WebGL 라이브러리로 GPU가 매 프레임마다 수학 공식을 사용해 실시간으로 그려 내는 화면이다. 별 하나하나가 미리 그려진 그림이 아니라, 이 좌표에 별이 있을 확률/색깔/밝기를 계산하는 함수로 즉석에서 계산되는 것이다.</p>
+
+        <p>3D 그래픽을 웹사이트에 담아내고자 하려 했던 난, 언젠가 WebGL 라이브러리를 사용하게 될 것이라고 생각하고 있었고, 이 웹사이트는 그 출발선에 서기 전 맛보기 용으로 훌륭한 교보재였다.</p>
+
+        <p>CLAUDE 를 활용하여 이 효과의 코드를 분석했을 때, 핵심 기법 4가지 결과를 얻을 수 있었다.</p>
+        <ol>
+          <li>레이어 깊이감 표현 (Parallax) : 별을 4개 층(NUM_LAYER = 4.0)으로 나눠서, 층마다 크기와 이동 속도를 다르게 주었다. 예를 들어 가까운 층은 크고 빠르게, 먼 층은 작고 느리게 움직이도록. 이를 통해 우주 공간의 원근감을 흉내내었다고 한다.</li>
+          <li>의사 난수(Pseudo-random) 배치 : Hash21 함수는 좌표를 넣으면 항상 같지만 무작위처럼 보이는 숫자를 뱉어낸다. 그래서 매 프레임 다시 계산해도 별의 위치는 흔들리지 않고 고정돼있으면서, 사람 눈엔 자연스럽게 흩뿌려진 것처럼 보인다고 한다.</li>
+          <li>반짝임(Twinkle)과 색조(Hue) 조정 : 시간에 따라 삼각파 함수(trisn)로 별의 밝기를 미세하게 진동시켜서 반짝이는 느낌을 주고, HSV 색상 모델로 전체 별의 색조(uHueShift)를 한 번에 통일감 있게 조정했다고 한다.</li>
+          <li>마우스 반응(Interactivity) : 마우스 위치를 셰이더에 실시간으로 넘겨서(uMouse), 별들이 마우스를 밀어내듯 좌표가 휘어지는 효과(repulsion)를 주었다. 사용자 행동에 반응하는 동적인 배경을 만드는데 핵심인 요소이다.</li>
+        </ol>
+
+        <p>이런 효과를 만약 &lt;div&gt; 수백 개로 별을 하나씩 만들고 JS로 애니메이션을 만들었다면 브라우저가 많이 버벅였을 것이다. 근데 이건 GPU가 화면의 픽셀 하나하나를 병렬로 계산하기 때문에 부드러운 60프레임으로 돌아가는 것이다.</p>
+
+        <p>아직은 어떤 방식을 쓴것이고 내가 무엇을 이해하고 넘어가야 하는지 눈에 들어오진 않는다. 다만, 현재 내가 공부중인 프론트엔드 문법조차 처음 봤을 때는 도대체 무슨 말을 하는지 전혀 이해가 안됐던것을 미루어봤을 때, 이를 이해하고 나만의 방식으로 습득하는 것은 시간문제라고 생각한다. 또한 이런 화려한 효과들을 자유자재로 생성하고 수정하고 꾸며낼 수 있게 된다면, 내가 만드는 프로그램과 웹사이트에 동적인 효과를 자연스럽게 포함시켜 독특하고 세련된 UX를 체험시켜 줄 수 있을 것이라고 생각한다.</p>
+      </details>
+
+      <details class="note">
+        <summary>HTML 정리</summary>
+
+        <h3>웹을 이루는 세 가지 언어</h3>
+        <p>웹페이지 하나는 HTML, CSS, JS 세 가지가 모여 만들어진다. 흔히 레고로 집을 짓는 것에 비유되는데, HTML은 집에 무엇이 있는지(글, 사진, 버튼)를 나타내는 뼈대이고, CSS는 그것이 어떻게 보이는지(색, 크기, 위치)를 정하는 꾸미기 작업이며, JS는 그것이 어떻게 움직이는지(클릭, 반응)를 담당하는 전기 배선과 스위치에 해당한다.</p>
+
+        <h3>기본 문서 구조</h3>
+        <img src="./img/notes/Pasted image 20260629113733.png" alt="HTML 기본 문서 구조 예시" />
+        <ul>
+          <li>모든 HTML 문서는 <code>&lt;!DOCTYPE html&gt;</code> 선언으로 시작하고, <code>&lt;html lang="ko"&gt;</code>로 언어를 지정한다.</li>
+          <li><code>&lt;head&gt;</code>는 화면에 직접 보이지 않는 정보를 준비하는 영역이다. <code>&lt;meta charset="UTF-8"&gt;</code>로 한글이 깨지지 않도록 인코딩을 지정하고, <code>&lt;title&gt;</code>도 이 안에 들어간다.</li>
+          <li><code>&lt;body&gt;</code>는 실제 화면에 보이는 내용을 작성하는 영역이다.</li>
+          <li>태그는 열었으면 반드시 닫아야 하며, 여는 태그·내용·닫는 태그를 합쳐 하나의 "요소(element)"라고 부른다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260629115854.png" alt="HTML 태그 작성 실습 화면" />
+        <ul>
+          <li>주석은 <code>&lt;!-- 이건 주석입니다 --&gt;</code> 형식으로 작성한다.</li>
+          <li>태그 이름은 대소문자를 구분하지 않는다.</li>
+        </ul>
+
+        <h3>엔티티(Entity)</h3>
+        <p><code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code> 기호는 HTML이 명령어로 착각할 수 있기 때문에, 글자 그대로 표시하려면 약속된 엔티티로 바꿔 써야 한다.</p>
+        <ul>
+          <li><code>&amp;lt;</code> → <code>&lt;</code></li>
+          <li><code>&amp;gt;</code> → <code>&gt;</code></li>
+          <li><code>&amp;amp;</code> → <code>&amp;</code></li>
+        </ul>
+
+        <h3>이미지와 링크</h3>
+        <img src="./img/notes/Pasted image 20260629133653.png" alt="img 태그 속성 예시" />
+        <ul>
+          <li><code>&lt;img&gt;</code> 태그는 <code>src</code>(이미지 주소), <code>alt</code>(대체 텍스트), <code>width</code>/<code>height</code>(크기) 속성을 갖는다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630103526.png" alt="a 태그 링크 예시" />
+        <ul>
+          <li><code>&lt;a href="..."&gt;</code>는 클릭 시 다른 곳으로 이동하는 링크를 만든다. <code>target="_blank"</code>를 지정하면 새 창(탭)에서 열린다.</li>
+          <li><code>href="#id이름"</code>으로 문서 내 특정 id 요소로 이동할 수 있다(class로는 불가능하다 — 한 문서에 여러 개가 있을 수 있기 때문).</li>
+          <li><code>mailto:</code>로 이메일 전송을, <code>tel:</code>로 전화 걸기를 연결할 수 있다.</li>
+        </ul>
+
+        <h3>시맨틱 태그</h3>
+        <img src="./img/notes/Pasted image 20260629142003.png" alt="header, main, footer 구조 예시" />
+        <ul>
+          <li>페이지는 보통 <code>header</code>, <code>main</code>, <code>footer</code>로 큰 틀을 나눈다.</li>
+          <li>블록 요소(<code>p</code>, <code>h1</code>, <code>ul</code>, <code>header</code> 등)는 한 줄을 통째로 차지하고, 인라인 요소(<code>a</code>, <code>strong</code>, <code>em</code> 등)는 글자 사이에 끼어드는 방식으로 배치된다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260629143548.png" alt="블록 요소와 인라인 요소 비교" />
+        <ul>
+          <li><code>ul</code>/<code>ol</code>은 목록을 담는 상자 역할을, <code>li</code>는 그 안의 개별 항목을 만드는 역할을 한다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630113939.png" alt="nav, section, article, aside 구조 예시" />
+        <ul>
+          <li><code>nav</code>는 메뉴·길 안내 같은 상단 내비게이션 역할을 한다.</li>
+          <li><code>section</code>은 하나의 주제를 설명하는 덩어리를 나타낸다.</li>
+          <li><code>article</code>은 글, 뉴스, 카드처럼 그 자체로 완결된 콘텐츠를 나타내며, 검색엔진과 스크린 리더가 우선적으로 인식한다.</li>
+          <li><code>aside</code>는 사이드바나 광고 영역을 나타낸다.</li>
+          <li>이런 시맨틱 태그를 쓰는 이유는 검색엔진과 화면 낭독기가 문서 구조를 더 잘 이해하도록 해서, <code>div</code>만 쓰는 것보다 SEO와 접근성 면에서 유리하기 때문이다.</li>
+        </ul>
+
+        <h3>자기소개 페이지 만들어보기</h3>
+        <img src="./img/notes/Pasted image 20260629143207.png" alt="자기소개 페이지 실습 예시" />
+
+        <h3>줄바꿈과 구분선</h3>
+        <img src="./img/notes/Pasted image 20260629143939.png" alt="br과 hr 태그 예시" />
+        <ul>
+          <li><code>&lt;br&gt;</code>은 한 문단 안에서 줄을 바꾸고, <code>&lt;hr&gt;</code>은 내용을 구분하는 가로줄을 그린다. 둘 다 닫는 태그가 없는 빈 요소다.</li>
+        </ul>
+
+        <h3>표(table)</h3>
+        <img src="./img/notes/Pasted image 20260629150526.png" alt="table 태그 기본 구조" />
+        <ul>
+          <li><code>table</code> 태그 안에서만 쓸 수 있는 전용 태그들이 있다. <code>th</code>는 가운데 정렬과 굵은 글씨가 적용되는 제목 칸, <code>td</code>는 일반 데이터 칸이다.</li>
+          <li><code>border</code> 값이 0이면 테두리가 없고, 값이 커질수록 테두리가 두꺼워진다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630112238.png" alt="colspan, rowspan 병합 예시" />
+        <ul>
+          <li><code>thead</code>/<code>tbody</code> 내부에서 <code>colspan</code>, <code>rowspan</code>으로 칸을 병합할 수 있다. 단, 병합을 쓰더라도 실제 <code>tr</code>과 값은 존재해야 한다.</li>
+        </ul>
+
+        <h3>폼(form)</h3>
+        <img src="./img/notes/Pasted image 20260629152329.png" alt="form과 input 기본 구조" />
+        <ul>
+          <li><code>form</code> 안에서 <code>label</code>로 이름표를 달고 <code>input</code>으로 입력 칸을 만든다. <code>button type="submit"</code>으로 모든 데이터를 한 번에 전송할 수 있다.</li>
+          <li><code>button</code>은 <code>form</code> 밖에서는 <code>onclick</code> 같은 별도 이벤트로만 동작한다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630105414.png" alt="input 타입별 예시" />
+        <ul>
+          <li><code>email</code>은 <code>@</code> 포함 여부를 검사하고, <code>password</code>는 입력 글자를 가려준다.</li>
+          <li><code>checkbox</code>는 여러 개 동시 선택이 가능하고, <code>radio</code>는 같은 <code>name</code>을 가진 것들 중 하나만 선택된다.</li>
+          <li><code>date</code>는 날짜 입력을, <code>textarea</code>는 크기 조절 가능한 여러 줄 입력을 제공한다.</li>
+          <li><code>select</code>는 드롭다운을 만들고, 내부 <code>option</code>에 <code>value</code>를 지정해 값의 순서를 안정적으로 유지할 수 있다.</li>
+        </ul>
+
+        <h3>미디어 삽입하기</h3>
+        <img src="./img/notes/Pasted image 20260630091401.png" alt="유튜브 iframe 삽입 예시" />
+        <ul>
+          <li><code>iframe</code> 태그로 유튜브 영상 등 다른 페이지의 콘텐츠를 그대로 가져와 삽입할 수 있다. 유튜브의 "퍼가기" 버튼으로 제공되는 코드를 그대로 붙여넣으면 된다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630094243.png" alt="구글 지도 iframe 삽입 예시" />
+        <ul>
+          <li>구글 지도도 같은 방식으로 삽입할 수 있으며, <code>src="...output=embed"</code> 형태로 직접 작성할 수도 있다. 주소에서 조건을 이을 때는 <code>&amp;</code>를 <code>&amp;amp;</code>로 이스케이프해야 한다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630115230.png" alt="video 태그 예시" />
+        <ul>
+          <li><code>&lt;video controls src="..."&gt;&lt;/video&gt;</code>로 직접 보유한 영상 파일을 재생할 수 있다.</li>
+          <li><code>source</code> 태그를 여러 개 나열하면 브라우저가 재생 가능한 형식을 자동으로 선택하고, 파일 형식(MIME type)을 함께 명시하는 것이 권장된다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630115810.png" alt="video 태그 대체 문구 예시" />
+        <ul>
+          <li>재생 가능한 형식이 하나도 없을 경우 표시할 대체 문구도 작성할 수 있다.</li>
+        </ul>
+
+        <h3>data, datalist, 정의 목록</h3>
+        <ul>
+          <li><code>&lt;data value="2024-06-01"&gt;2024년 6월 1일&lt;/data&gt;</code>처럼, <code>value</code>에는 컴퓨터가 읽을 값을, 태그 내용에는 사람이 읽을 글자를 넣는다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630092157.png" alt="datalist 자동완성 예시" />
+        <ul>
+          <li><code>input</code>의 <code>list</code> 속성과 <code>datalist</code>의 <code>id</code>를 매치시키면, 입력 칸에 추천 키워드 목록을 띄울 수 있다.</li>
+          <li><code>label</code>의 <code>for</code>와 <code>input</code>의 <code>id</code>를 같게 지정하면, 글자를 클릭해도 입력 칸을 클릭한 것과 같은 효과를 준다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630093512.png" alt="dl, dt, dd 정의 목록 예시" />
+        <ul>
+          <li><code>dl</code>/<code>dt</code>/<code>dd</code>는 국어사전처럼 용어와 그 뜻을 짝지어 작성할 수 있는 태그다. <code>dt</code>는 용어, <code>dd</code>는 그에 대한 설명이며 들여쓰기 되어 표시된다.</li>
+        </ul>
+
+        <h3>class와 id</h3>
+        <img src="./img/notes/Pasted image 20260630095500.png" alt="class 속성 예시" />
+        <ul>
+          <li><code>class</code>는 요소에 이름표를 붙여 CSS/JS에서 선택할 수 있게 해주는 속성이다. 공백으로 구분해 하나의 요소에 여러 클래스를 동시에 적용할 수 있다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630100424.png" alt="id 속성 예시" />
+        <ul>
+          <li><code>id</code>는 문서 안에서 단 한 번만 지정할 수 있고, 공백으로 여러 개를 동시에 부여할 수 없다. CSS 우선순위도 class보다 높다.</li>
+        </ul>
+
+        <h3>div와 span</h3>
+        <img src="./img/notes/Pasted image 20260630101246.png" alt="div 태그 예시" />
+        <ul>
+          <li><code>div</code>는 그 자체로는 의미가 없는(non-semantic) 태그지만, 여러 요소를 하나로 묶어 한 번에 스타일을 적용할 때 유용하다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260630101557.png" alt="div 활용 결과 예시" />
+        <img src="./img/notes/Pasted image 20260630101824.png" alt="span 태그 예시" />
+        <ul>
+          <li><code>span</code>도 non-semantic 태그이지만, 한 줄 전체가 아니라 글자 몇 개만 작게 감싸는 용도로 쓰인다. 가능하면 의미에 맞는 시맨틱 태그를 먼저 쓰고, 마땅한 게 없을 때 <code>div</code>/<code>span</code>을 쓰는 것이 권장된다.</li>
+        </ul>
+
+        <h3>파일 경로 지정하기</h3>
+        <img src="./img/notes/Pasted image 20260630102947.png" alt="상대 경로 지정 예시" />
+        <ul>
+          <li><code>src</code>(source)로 파일 경로를 지정한다. <code>.</code>은 현재 폴더, <code>..</code>은 상위 폴더를 의미하며, 경로를 잘못 지정하면 이미지가 깨져서 나온다.</li>
+        </ul>
+
+        <h3>글자 꾸미기 태그</h3>
+        <img src="./img/notes/Pasted image 20260630111103.png" alt="텍스트 서식 태그 예시" />
+        <ul>
+          <li><code>em</code>은 이탤릭체, <code>strong</code>/<code>b</code>는 볼드체, <code>u</code>는 밑줄, <code>s</code>는 취소선, <code>mark</code>는 형광펜 표시, <code>small</code>은 작은 글씨, <code>code</code>는 코드체를 나타낸다.</li>
+          <li><code>blockquote</code>는 긴 인용문을, <code>q</code>는 짧은 인용문을 나타내며, <code>cite</code>로 인용 출처 주소를 명시할 수 있다.</li>
+          <li><code>sub</code>는 아래첨자, <code>sup</code>는 위첨자를 만든다.</li>
+        </ul>
+
+        <h3>접고 펼치기 (details)</h3>
+        <img src="./img/notes/Pasted image 20260630112528.png" alt="details, summary 태그 예시" />
+        <ul>
+          <li><code>details</code>는 접거나 펼 수 있는 상자를 만들고, <code>summary</code>는 항상 보이는 제목을 지정한다.</li>
+        </ul>
+
+        <h3>Emmet 자동완성</h3>
+        <img src="./img/notes/Pasted image 20260630130413.png" alt="Emmet 자동완성 예시" />
+        <ul>
+          <li><code>!</code> 입력 후 Tab을 누르면 기본 HTML 뼈대가 자동 생성된다.</li>
+          <li><code>ul&gt;li*3</code>처럼 <code>&gt;</code>는 안에 넣기, <code>*n</code>은 n번 반복을 의미한다.</li>
+          <li><code>.이름</code>은 class, <code>#이름</code>은 id를 만들고, <code>{글자}</code>는 내용을 채운다.</li>
+        </ul>
+      </details>
+
+      <details class="note">
+        <summary>CSS 정리</summary>
+
+        <h3>CSS 기본 문법과 연결 방법</h3>
+        <p>CSS는 페이지에 옷을 입히는 것과 같다. 밋밋한 화면의 색, 크기, 위치를 보기 좋게 바꿔주는 역할이다. 한 줄의 짜임은 <code>h1 { color: red; }</code>처럼 선택자(누구를), 속성(무엇을), 값(어떻게)으로 이루어진다.</p>
+        <img src="./img/notes/Pasted image 20260630154034.png" alt="HTML과 CSS 연결 구조" />
+        <ul>
+          <li>CSS는 <code>styles/main.css</code>에 작성한 뒤, HTML의 <code>&lt;head&gt;</code>에서 <code>&lt;link rel="stylesheet" href="..."&gt;</code>로 불러온다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260701115302.png" alt="CSS를 HTML에 적용하는 세 가지 방법" />
+        <ul>
+          <li><strong>외부 방식</strong>: <code>&lt;link&gt;</code>로 연결하며, 여러 페이지에서 공유하고 관리하기 쉽다.</li>
+          <li><strong>내부 방식</strong>: <code>&lt;style&gt;</code> 태그를 <code>head</code> 안에 직접 작성하며, 한 페이지에만 적용된다.</li>
+          <li><strong>인라인 방식</strong>: 태그에 <code>style="..."</code>을 직접 넣으며, 그 요소 하나에만 적용된다.</li>
+        </ul>
+
+        <h3>코드 작성 순서 관례</h3>
+        <img src="./img/notes/Pasted image 20260701091634.png" alt="선택자 작성 순서 예시" />
+        <img src="./img/notes/Pasted image 20260701092003.png" alt="선택자 작성 순서 실습" />
+        <ul>
+          <li>일반적인 것에서 구체적인 것 순서로 작성하는 것이 관례다: <code>body</code>(전체) → 요소(<code>h1</code>, <code>p</code>) → 클래스(<code>.special</code>) → 자손(<code>li em</code>) 순서로 쌓아 올린다.</li>
+        </ul>
+
+        <h3>선택자</h3>
+        <ul>
+          <li><code>:root</code>는 문서의 최상위 요소를 가리키며, <code>html</code>과 같은 위치를 가지지만 명시도가 더 높다(가상 클래스 선택자로 10점, 겹치면 root가 이긴다). 전역 변수를 선언하는 관용적인 자리로도 쓰인다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260701125534.png" alt="의사 클래스(링크 상태) 예시" />
+        <ul>
+          <li><code>a</code> 태그의 상태별 스타일을 지정하는 의사 클래스가 있다: <code>link</code>(기본 상태), <code>visited</code>(방문 후), <code>hover</code>(마우스를 올렸을 때), <code>active</code>(누르는 중). 이 순서를 지켜 작성해야 하며, 앞 글자를 따 LVHA라고 부른다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260702130946.png" alt="선택자 종류 정리" />
+        <ul>
+          <li><code>class</code>와 <code>id</code>는 가상 클래스가 아니다. <code>:hover</code>, <code>:root</code>, <code>:nth-child()</code>처럼 HTML에 직접 선언한 적 없는 상태나 구조적 사실을 브라우저가 실시간으로 판단해 골라주는 것이 가상 클래스다.</li>
+          <li><code>::before</code>, <code>::after</code>, <code>::first-letter</code>처럼 요소 안에 존재하지 않던 새로운 부분을 만들어내는 것은 가상 요소(pseudo-element)라고 하며, 가상 클래스와 구분하기 위해 콜론을 두 개(<code>::</code>) 쓴다.</li>
+        </ul>
+
+        <h3>박스 모델과 기본 속성</h3>
+        <img src="./img/notes/Pasted image 20260701102234.png" alt="margin, padding, border 예시" />
+        <ul>
+          <li><code>font-family</code>는 글씨체를 지정하며, 여러 개를 나열하면 그 순서가 우선순위가 된다.</li>
+          <li><code>margin</code>은 요소 바깥 여백을, <code>padding</code>은 콘텐츠와 테두리 사이 안쪽 여백을 조정한다. 값을 2개 쓰면 각각 위/아래, 왼쪽/오른쪽 순서다.</li>
+          <li><code>margin</code>에 <code>auto</code>를 주면 요소를 가운데 정렬할 수 있는데, 이때 요소의 <code>width</code>가 지정되어 있어야 한다.</li>
+          <li><code>padding</code>을 늘리면 콘텐츠 크기는 그대로인데 그 주변 여백이 두꺼워지면서 박스의 전체 바깥 크기가 커진다. 이 현상을 막으려면 <code>box-sizing: border-box;</code>를 지정해, padding과 border를 포함한 크기로 width/height를 고정할 수 있다. 실무에서는 거의 예외 없이 이 설정을 쓴다.</li>
+          <li><code>border</code>는 두께, 모양(<code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>double</code> 등), 색상 순서로 지정한다.</li>
+        </ul>
+        <ul>
+          <li><code>text-align</code>은 인라인 요소를 가로 기준으로 정렬한다.</li>
+          <li><code>margin-top</code>은 요소 자체를 위쪽 바깥 여백으로 밀어내는 방식이며, 안쪽 여백인 <code>padding-top</code>과는 동작 방식이 다르다.</li>
+          <li><code>font-weight</code>는 글자 굵기를, <code>font-style</code>은 이탤릭 등 글자 스타일을 조정한다.</li>
+          <li><code>color</code>는 순수한 색상값만 받을 수 있어 <code>linear-gradient</code>는 적용되지 않는다(이미지 타입으로 분류되기 때문). 그라디언트를 쓸 수 있는 건 <code>background</code>(또는 <code>background-image</code>)뿐이다.</li>
+        </ul>
+
+        <h3>레이아웃: position, display, flex, grid</h3>
+        <ul>
+          <li><code>position</code>은 요소가 문서 흐름에서 어떻게 배치되고 기준점이 어디인지를 정한다.</li>
+          <li><code>relative</code>는 두 가지 역할을 한다 — <code>top</code>/<code>left</code> 등을 함께 쓰면 원래 자리를 차지한 채 시각적으로만 이동하고, 자식 요소가 <code>absolute</code>를 쓸 때 그 기준점이 되어준다.</li>
+          <li><code>absolute</code>는 문서 흐름에서 완전히 빠져나와 가장 가까운 <code>relative</code> 조상을 기준으로 좌표를 잡는다(조상이 없으면 뷰포트 기준).</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260702110336.png" alt="position 속성 4종 비교" />
+        <ul>
+          <li><code>relative</code> — 원래 자리 기준 이동</li>
+          <li><code>absolute</code> — 위치 지정 조상 기준</li>
+          <li><code>fixed</code> — 화면(뷰포트) 고정</li>
+          <li><code>sticky</code> — 스크롤 시 화면에 달라붙음</li>
+          <li><code>inset</code>은 <code>top/right/bottom/left: 0;</code>을 한 번에 쓰는 축약형으로, <code>absolute</code>와 함께 쓰면 부모와 똑같은 크기로 꼭 맞게 채워진다.</li>
+        </ul>
+        <ul>
+          <li><code>display</code>는 요소의 배치와 크기 규칙을 결정한다. <code>none</code>은 화면에서 사라지고, <code>block</code>은 한 줄을 통째로 차지하며 width/height/margin/padding이 모두 정상 작동한다. <code>inline</code>은 글자처럼 옆으로 흐르되 width/height가 무시되고, <code>inline-block</code>은 옆으로 흐르면서도 크기 지정이 가능한 절충안이다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260701114443.png" alt="flex 레이아웃 실습 예시" />
+        <ul>
+          <li><code>flex: 1;</code>은 <code>flex-grow: 1; flex-shrink: 1; flex-basis: 0%;</code> 세 속성을 한 번에 줄인 것이다. grid의 <code>fr</code>과 비슷하지만, grid는 부모가 틀을 미리 짜는 방식이고 flex는 자식들이 각자 몫을 요구하는 방식이라는 접근 차이가 있다.</li>
+          <li>flex 컨테이너로 만들지 않으면 자식은 그냥 <code>display: block</code> 상태로 남는다.</li>
+        </ul>
+
+        <h3>애니메이션과 관련된 개념들</h3>
+        <ul>
+          <li><code>vh</code>/<code>vw</code>는 각각 뷰포트 세로/가로 크기를 기준으로 하는 단위다.</li>
+          <li><code>perspective</code>는 관찰자와 화면 사이의 거리를 나타내며, 값이 작을수록 원근 왜곡이 심하게(입체적으로) 보인다.</li>
+          <li>자주 쓰는 <code>transform</code> 함수로 <code>translate</code>, <code>scale</code>, <code>rotate</code>, <code>skew</code>가 있으며, 실무에서는 앞의 세 가지가 특히 많이 쓰인다.</li>
+          <li><code>ease</code>는 시간에 따른 변화 속도를 정하는 곡선(cubic-bezier)이다. <code>linear</code>는 등속, <code>ease</code>(기본값)는 천천히 시작해 빨라졌다가 천천히 마무리, <code>ease-in</code>은 천천히 시작해 급하게 끝나고, <code>ease-out</code>은 빠르게 시작해 부드럽게 끝난다.</li>
+          <li>CSS 좌표계는 수학 그래프와 달리 아래로 갈수록 y값이 커지므로, 위로 떠오르는 애니메이션을 만들려면 <code>translateY</code>에 음수 값을 줘야 한다.</li>
+          <li><code>animation-iteration-count</code>로 반복 횟수(숫자 또는 <code>infinite</code>)를 지정할 수 있다. <code>transition</code>에는 이 개념이 없는데, A에서 B로 한 번만 진행되는 것이기 때문이다.</li>
+          <li><code>linear-gradient(각도, 시작색, 끝색)</code>은 두 색을 지정한 각도로 부드럽게 이어 배경으로 깔아준다(0deg는 아래→위, 90deg는 왼쪽→오른쪽 기준).</li>
+        </ul>
+
+        <h3>변수와 리셋</h3>
+        <img src="./img/notes/Pasted image 20260702125256.png" alt="CSS 변수 선언 예시" />
+        <ul>
+          <li>CSS 변수는 반드시 <code>--</code>로 시작해야 하며(<code>--이름: 값;</code>), 사용할 때는 <code>var(--이름)</code>으로 불러온다.</li>
+          <li>브라우저마다 기본 margin, padding, box-sizing이 달라 CSS 리셋이 필요하다. <code>box-sizing: border-box;</code>는 실무에서 거의 항상 쓰지만, <code>margin: 0; padding: 0;</code>을 무조건 다 지우는 방식(Eric Meyer's Reset 같은 고전적 방식)보다는, normalize.css나 모던 CSS 리셋, 혹은 Tailwind/Bootstrap 같은 프레임워크 내장 리셋을 쓰는 것이 요즘 추세다.</li>
+        </ul>
+
+        <h3>Stylelint</h3>
+        <img src="./img/notes/Pasted image 20260701100813.png" alt="stylelint 설정 파일 예시" />
+        <ul>
+          <li>CSS 전용 린터(맞춤법 검사기)로, 오타·잘못된 속성·중복·순서를 검사해준다(HTML은 대상이 아니다). <code>extends</code>로 기본 규칙 묶음을, <code>plugin</code>으로 추가 기능(순서 검사 등)을 가져오고, <code>rules</code>로 개별 규칙을 켤 수 있다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260701100959.png" alt="stylelint 실행 예시" />
+        <ul>
+          <li><code>npm</code>으로 설치한 뒤 <code>npx stylelint</code> 명령어로 실행한다.</li>
+        </ul>
+
+        <h3>실전 프로젝트: 3D 카드 뒤집기</h3>
+        <img src="./img/notes/Pasted image 20260701135449.png" alt="3D 카드 뒤집기 실습 결과" />
+        <ul>
+          <li><code>transition</code>은 값이 바뀔 때 즉시 반영하지 않고 부드럽게 보간하는 속성이며, 지정한 속성에만 적용된다.</li>
+          <li><code>transform-style</code>은 자식 요소들을 자신과 같은 3D 공간에서 취급할지 정하는 속성으로, <code>flat</code>과 <code>preserve-3d</code> 두 값만 있다. <code>flat</code>으로 두면 "뒷면"이라는 개념 자체가 사라져 뒷면 요소가 무시된다.</li>
+          <li><code>backface-visibility</code>는 회전 각도가 -90°~90° 사이면 앞면이 보이는 상태, 90°~270° 사이면 뒷면이라 숨겨지는 상태로 판단한다.</li>
+          <li>hover를 감지할 때 회전하는 요소가 아닌 고정된 부모 요소(<code>.card:hover .inner</code>)를 기준으로 삼는 이유는, 회전 중인 요소 자체가 완전히 얇아지는 순간 마우스가 hover 상태를 놓쳐 깜빡이는 버그가 생길 수 있기 때문이다.</li>
+        </ul>
+
+        <h3>실전 프로젝트: hover 회전 + 확대, 자동 애니메이션, 네온 카드</h3>
+        <img src="./img/notes/Pasted image 20260702091436.png" alt="hover 회전 확대 실습" />
+        <ul>
+          <li><code>transform: rotate() scale()</code>처럼 기울이기와 확대를 함께 적용할 수 있다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260702094045.png" alt="keyframes 자동 애니메이션 실습" />
+        <ul>
+          <li><code>@keyframes</code>로 동작을 정의한 뒤 <code>animation</code>으로 반복시킨다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260702100249.png" alt="네온 그래디언트 카드 실습" />
+        <ul>
+          <li><code>linear-gradient</code>로 두 색의 그라디언트 배경을 만들고, <code>box-shadow</code>의 흐림 반경을 크게 줘서 네온 글로우 효과를 낸다.</li>
+        </ul>
+
+        <h3>실전 프로젝트: Grid와 반응형</h3>
+        <img src="./img/notes/Pasted image 20260702111820.png" alt="grid 갤러리 실습" />
+        <ul>
+          <li><code>grid-template-columns</code>로 열을 만들고, 그 안에 카드를 배치해 갤러리를 구성한다.</li>
+        </ul>
+        <img src="./img/notes/Pasted image 20260702114833.png" alt="반응형 미디어쿼리 이전" />
+        <img src="./img/notes/Pasted image 20260702114845.png" alt="반응형 미디어쿼리 이후" />
+        <ul>
+          <li>화면 너비가 줄어들면 <code>@media</code> 쿼리로 정렬 방향을 바꿔, 모바일과 PC 환경을 구분해 대응한다.</li>
+        </ul>
+
+        <h3>실전 프로젝트: 가짜 요소 활용</h3>
+        <img src="./img/notes/Pasted image 20260702142426.png" alt="가짜 요소(::before, ::after) 실습" />
+        <ul>
+          <li><code>::before</code>, <code>::after</code>는 선택자 하나당 딱 1개씩만 만들 수 있으며, 요소 전체에 붙는 고정된 장식을 만든다. HTML은 콘텐츠와 기능 설명에만 집중하고, 장식은 CSS가 전담하도록 역할을 나눠준다.</li>
+        </ul>
+
+        <h3>참고할 만한 사이트</h3>
+        <img src="./img/notes/Pasted image 20260703094414.png" alt="참고 사이트 목록" />
+        <ul>
+          <li><a href="https://uiverse.io/" target="_blank">uiverse.io</a></li>
+          <li><a href="https://bentogrids.com/" target="_blank">bentogrids.com</a></li>
+        </ul>
+      </details>
+
+      <details class="note">
+        <summary>HTML, CSS 퀴즈 5개</summary>
+        <ol class="quiz-list">
+          <li>
+            <p>padding을 늘렸을 때, 콘텐츠 크기는 그대로 두고 박스의 전체 크기가 커지지 않도록 막아주는 CSS 속성은?</p>
+            <ul>
+              <li>① <code>display: flex</code></li>
+              <li>② <code>box-sizing: border-box</code></li>
+              <li>③ <code>position: relative</code></li>
+              <li>④ <code>overflow: hidden</code></li>
+            </ul>
+            <details class="answer">
+              <summary>정답 보기</summary>
+              <p>② <code>box-sizing: border-box</code></p>
+            </details>
+          </li>
+
+          <li>
+            <p>다음 중 한 문서 안에서 딱 한 번만 사용할 수 있는 것은?</p>
+            <ul>
+              <li>① class</li>
+              <li>② id</li>
+              <li>③ span</li>
+              <li>④ div</li>
+            </ul>
+            <details class="answer">
+              <summary>정답 보기</summary>
+              <p>② id</p>
+            </details>
+          </li>
+
+          <li>
+            <p>자기 자신은 원래 자리를 유지하면서, 자식 요소가 <code>absolute</code>를 쓸 때 그 기준점이 되어주는 <code>position</code> 값은?</p>
+            <ul>
+              <li>① static</li>
+              <li>② fixed</li>
+              <li>③ relative</li>
+              <li>④ sticky</li>
+            </ul>
+            <details class="answer">
+              <summary>정답 보기</summary>
+              <p>③ relative</p>
+            </details>
+          </li>
+
+          <li>
+            <p>다음 중 콜론을 두 개(<code>::</code>) 써야 하는 것은?</p>
+            <ul>
+              <li>① hover</li>
+              <li>② root</li>
+              <li>③ before</li>
+              <li>④ nth-child()</li>
+            </ul>
+            <details class="answer">
+              <summary>정답 보기</summary>
+              <p>③ before (<code>::before</code>는 가상 요소라서 콜론 두 개)</p>
+            </details>
+          </li>
+
+          <li>
+            <p>글, 뉴스, 카드처럼 그 자체로 완결된 콘텐츠를 나타내며, 검색엔진과 스크린 리더가 우선적으로 인식하는 태그는?</p>
+            <ul>
+              <li>① div</li>
+              <li>② section</li>
+              <li>③ article</li>
+              <li>④ aside</li>
+            </ul>
+            <details class="answer">
+              <summary>정답 보기</summary>
+              <p>③ article</p>
+            </details>
+          </li>
+        </ol>
+      </details>
+    </section>
+
+    <footer>
+      <button type="button" id="toTopBtn" class="to-top" aria-label="맨 위로">↑</button>
+    </footer>
+
+    <script src="./scripts/main.js"></script>
   </body>
   </html>
