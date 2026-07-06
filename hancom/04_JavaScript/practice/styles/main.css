@@ -7,6 +7,12 @@ body {
     justify-content: center;
 }
 
+button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin: 2px;
+}
+
 #title {
     color: goldenrod;
     font-size: 3rem;

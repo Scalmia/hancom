@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>연산자/조건문/함수/이벤트/이미지 바꾸기/메시지 저장</title>
+        <link rel="stylesheet" href="./styles/main.css" />
+    </head>
+    <body>
+        <input id="a" type="number" value="5"/>
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input id="b" type="number" value="3"/>
+        <button id="calculate">계산</button>
+        <p id="result"></p>
+        <h1>조건문</h1>
+        <select id="flavor">
+            <option value="chocolate">초콜릿</option>
+            <option value="vanilla">바닐라</option>
+            <option value="strawberry">딸기</option>
+        </select>
+        <button id="checkFlavor">맛 확인</button>
+        <p id="flavorResult"></p>
+        <h1>함수</h1>
+        <input id="a2" type="number" value="5"/>
+        <span>x</span>
+        <input id="b2" type="number" value="3"/>
+        <button id="calculateFunction">함수로 계산</button>
+        <p id="functionResult"></p>
+        <h1>이벤트</h1>
+        <button id="eventButton">이벤트 버튼</button>
+        <p id="eventResult">0번 눌렀어요.</p>
+        <h1>이미지 바꾸기</h1>
+        <img id="image" alt="이미지" />
+        <p id="hint">이미지를 클릭하세요.</p>
+        <h1>메시지 저장</h1>
+        <h2 id="greet">Hello !</h2>
+        <input id="nameInput" type="text" placeholder="이름을 입력하세요." />
+        <button id="saveName">저장</button>
+        <button id="resetName">초기화</button>
+        <script src="./scripts/main.js"></script>
+    </body>
+</html>

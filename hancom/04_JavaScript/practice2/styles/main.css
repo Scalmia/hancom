@@ -1,0 +1,50 @@
+input {
+    width : 200px;
+    padding : 5px;
+    font-size : 20px;
+}
+
+select, button {
+    width : 150px;
+    padding : 4px;
+    font-size : 20px;
+    margin : 0px 10px;
+}
+
+#result {
+    display : block;
+    font-weight : bold;
+    margin-top : 20px;
+    font-size : 30px;
+}
+
+#flavorResult {
+    display : block;
+    font-weight : bold;
+    margin-top : 20px;
+    font-size : 30px;
+}
+
+#eventButton {
+    width : 200px;
+    padding : 10px;
+    font-size : 30px;
+}
+
+#image {
+    width : 300px;
+    height : 300px;
+    cursor : pointer;
+    border-radius : 10px;
+}
+
+#hint {
+    font-size : 20px;
+    margin-top : 10px;
+}
+
+#greet {
+    font-size : 50px;
+    margin-bottom : 10px;
+    color:aquamarine
+}
