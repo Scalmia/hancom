@@ -3,8 +3,13 @@ button, input {
     font-size: 16px;
 }
 
-#result {
+#result, #result2, #result3, #result4{
     margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
+}
+
+#info {
+    color:darkcyan;
+    margin-top: 10px;
 }

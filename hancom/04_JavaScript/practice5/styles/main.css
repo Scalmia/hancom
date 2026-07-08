@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    color: #4c5043;
+}
+
+.note {
+    font-size: 14px;
+    color: #757575;
+}
+
+.btn-row {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#result {
+    background: linear-gradient(#a9bbbb, #4a7c7c);
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Diphylleia, arial;
+    font-size: 14px;
+}
