@@ -1,0 +1,22 @@
+/* App.css = App.jsx 화면(컴포넌트) 전용 꾸미기 */
+
+.counter {                       /* 버튼(className="counter") 스타일 */
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);          /* index.css 변수 색 끌어다 씀 */
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s; /* 색 0.3초 동안 부드럽게 */
+
+  &:hover {                      /* 마우스 올리면 (& = 자기 자신) */
+    border-color: var(--accent-border);
+  }
+}
+
+.hero {                          /* 로고 3장 겹치는 영역 */
+  position: relative;
+  .base { width: 170px; }        /* 가운데 큰 그림 */
+  .framework, .vite { position: absolute; }   /* 그 위에 겹쳐 띄움 */
+}
+/* …이 아래로 #center·#next-steps·.ticks 등 더 있음 (지금은 몰라도 됨) */

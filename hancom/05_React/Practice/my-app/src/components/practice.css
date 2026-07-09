@@ -1,0 +1,13 @@
+.hello {
+    background-color: rgb(199, 186, 186);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    color: rgb(63, 55, 45);
+}
+
+.hello h1 {
+    font-size: 24px;
+    color: #9b176f;
+}
