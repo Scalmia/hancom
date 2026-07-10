@@ -10,19 +10,50 @@ import { useState } from 'react'
 // import { Rating } from './components/practice2.jsx'
 // import { Tag } from './components/practice2.jsx'
 
-import { Button } from '@mui/material'
-import Counter from './components/practice3.jsx'
+// import { Button } from '@mui/material'
+// import Counter from './components/practice3.jsx'
+// import { NameForm } from './components/practice3.jsx'
+// import { ProductItem } from './components/practice3.jsx'
+// import { Hello } from './components/practice3.jsx'
+// import { Clock } from './components/practice3.jsx'
+// import { Counter2 } from './components/practice3.jsx'
+// import { Every } from './components/practice3.jsx'
+// import { Users } from './components/practice3.jsx'
+// import { Users2 } from './components/practice3.jsx'
+// import { Weather } from './components/practice3.jsx'
+// import { Weather2 } from './components/practice3.jsx'
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './components/practice.jsx'
+import About from './components/practice2.jsx'
 
 const App = () => {
   // const [name, setName] = useState("John")
   // const list = ["React", "Vue", "Angular", "Svelte"]
   return (
-    <>
-      <Button variant="contained" color="inherit" onClick={() => alert("Button clicked!")}>
-        submit
-      </Button>
-      <Counter />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+
+    // <>
+    //   <Button variant="contained" color="inherit" onClick={() => alert("Button clicked!")}>
+    //     submit
+    //   </Button>
+    //   <Counter />
+    //   <NameForm />
+    //   <ProductItem name="Running shoes" />
+    //   <Hello />
+    //   <Clock />
+    //   <Counter2 />
+    //   <Every />
+    //   <Users />
+    //   <Users2 />
+    //   <Weather />
+    //   <Weather2 />
+    // </>
 
     // <> // 여러 기능
     //     <LikeButton />
