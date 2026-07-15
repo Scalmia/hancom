@@ -1,7 +1,7 @@
 document.getElementById('btn').addEventListener('click', () => {
     const prompt = document.getElementById('q').value;
 
-    fetch('http://localhost:3000/api/groq', {
+    fetch('/api/groq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })

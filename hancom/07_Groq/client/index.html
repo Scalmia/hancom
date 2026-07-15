@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groq Chat</title>
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <input id="q" placeholder="question" />
-    <button id="btn">Ask</button>
-    <p>Response : <b id="ans">...</b></p>
+    <div class="chat-card">
+        <h1>Groq Chat</h1>
+        <p class="subtitle">무엇이든 물어보세요.</p>
+        <div class="input-row">
+            <input id="q" placeholder="question" />
+            <button id="btn">Ask</button>
+        </div>
+        <div class="response-window">
+            <div class="response-label">Response</div>
+            <b id="ans">...</b>
+        </div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>

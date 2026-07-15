@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Night Alley</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="hero" id="hero">
+    <p class="hero-eyebrow">Portfolio</p>
+    <h1>골목 끝, 가로등 하나</h1>
+    <p>혼자 걷는 밤이지만 외롭지 않습니다. 배운 것들을 하나씩 밝혀가며 걷고 있습니다.</p>
+    <a class="btn" href="#projects">둘러보기</a>
+    <span class="scroll-cue">스크롤 ↓</span>
+  </header>
+
+  <main>
+    <section class="about reveal" id="about">
+      <h2>소개</h2>
+      <p>
+        새로운 기술을 배우면 바로 직접 만들어보며 이해하는 걸 좋아합니다.
+        이 페이지는 Claude의 frontend-design 스킬로, 색·타이포·레이아웃·시그니처를
+        먼저 정한 뒤 토큰 시스템으로 만들었습니다.
+      </p>
+    </section>
+
+    <section class="projects reveal" id="projects">
+      <h2>지나온 골목들</h2>
+      <div class="project-grid">
+        <article class="card">
+          <span class="card-tag">Project 01</span>
+          <h3>프로젝트 제목</h3>
+          <p>여기에 프로젝트에 대한 간단한 설명이 들어갑니다. 사용한 기술, 해결한 문제 등을 적어주세요.</p>
+          <a href="#">자세히 보기 →</a>
+        </article>
+        <article class="card">
+          <span class="card-tag">Project 02</span>
+          <h3>프로젝트 제목</h3>
+          <p>여기에 프로젝트에 대한 간단한 설명이 들어갑니다. 사용한 기술, 해결한 문제 등을 적어주세요.</p>
+          <a href="#">자세히 보기 →</a>
+        </article>
+        <article class="card">
+          <span class="card-tag">Project 03</span>
+          <h3>프로젝트 제목</h3>
+          <p>여기에 프로젝트에 대한 간단한 설명이 들어갑니다. 사용한 기술, 해결한 문제 등을 적어주세요.</p>
+          <a href="#">자세히 보기 →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contact reveal" id="contact">
+    <h2>연락처</h2>
+    <p>같이 이야기 나누고 싶으시면 아래로 연락해주세요.</p>
+    <div class="contact-links">
+      <a href="mailto:example@email.com">Email</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <p>&copy; 2026. All rights reserved.</p>
+  </footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal')
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+      }
+    })
+  }, { threshold: 0.15 })
+
+  revealEls.forEach(el => observer.observe(el))
+</script>
+
+</body>
+</html>

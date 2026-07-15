@@ -1,0 +1,20 @@
+:root {
+  /* colors */
+  --bg: #0b0e1a;
+  --bg-alt: #151b2e;
+  --lamp: #e8a94f;
+  --lamp-glow: rgba(232, 169, 79, 0.35);
+  --starlight: #e8ecf5;
+  --text-dim: #7a8296;
+  --border: #232a40;
+
+  /* type */
+  --font-display: Georgia, 'Noto Serif KR', serif;
+  --font-body: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-utility: 'Courier New', monospace;
+
+  /* spacing */
+  --section-pad: 100px;
+  --section-pad-mobile: 64px;
+  --radius: 10px;
+}
