@@ -1,3 +1,5 @@
 node_modules/
 dist/
 .env
+hancom/13_YOLO/models/
+hancom/13_YOLO/runs/
