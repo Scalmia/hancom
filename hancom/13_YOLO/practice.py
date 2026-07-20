@@ -37,15 +37,28 @@
 # cv2.imwrite(output_image_path, result_image)
 # print(f"예측 결과 이미지가 잘 저장 되었습니다. {output_image_path}")
 
+# from ultralytics import YOLO
+# import cv2
+
+# model = YOLO("yolo11n-seg.pt")
+
+# results = model("sample.jpg")
+
+# result_image = results[0].plot()
+
+# output_image_path = "output_seg.jpg"
+# cv2.imwrite(output_image_path, result_image)
+# print(f"예측 결과 이미지가 잘 저장 되었습니다. {output_image_path}")
+
 from ultralytics import YOLO
 import cv2
 
-model = YOLO("yolo11n-seg.pt")
+model = YOLO("models/yolo11n.pt")
 
-results = model("sample.jpg")
+results = model("images/input_params.jpg", classes=[60, 75])  # 여기에 원하는 클래스 2개 번호 넣기
 
 result_image = results[0].plot()
 
-output_image_path = "output_seg.jpg"
+output_image_path = "images/output_classes.jpg"
 cv2.imwrite(output_image_path, result_image)
 print(f"예측 결과 이미지가 잘 저장 되었습니다. {output_image_path}")

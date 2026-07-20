@@ -3,3 +3,4 @@ dist/
 .env
 hancom/13_YOLO/models/
 hancom/13_YOLO/runs/
+hancom/13_YOLO/weights/
