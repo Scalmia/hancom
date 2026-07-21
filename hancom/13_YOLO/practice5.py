@@ -1,5 +1,5 @@
-# from dotenv import load_dotenv
-# import os
+from dotenv import load_dotenv
+import os
 # from ultralytics import YOLO
 # import cv2
 
@@ -74,36 +74,36 @@ stream_url = "http://210.99.70.120:1935/live/cctv009.stream/playlist.m3u8"
 cap = cv2.VideoCapture(stream_url)
 assert cap.isOpened(), "CCTV URL 확인 또는 접근 확인해주세요."
 
-# from_email = "dd0220ndd0220@gmail.com"
-# load_dotenv(".env")
-# password = os.getenv("GOOGLE_APP_PASSWORD")
-# to_email = "wjdsdd0220@gmail.com"
+from_email = "dd0220ndd0220@gmail.com"
+load_dotenv(".env")
+password = os.getenv("GOOGLE_APP_PASSWORD")
+to_email = "wjdsdd0220@gmail.com"
 
-# google_alarm = solutions.SecurityAlarm(
-#     model="models/yolo11n.pt",
-#     show=True,
-#     records=1,
-#     classes=[5]
-# )
-# google_alarm.authenticate(from_email, password, to_email)
+google_alarm = solutions.SecurityAlarm(
+    model="models/yolo11n.pt",
+    show=True,
+    records=1,
+    classes=[5]
+)
+google_alarm.authenticate(from_email, password, to_email)
 
-# while cap.isOpened():
-#     success, frame = cap.read()
-#     if not success:
-#         print("CCTV URL 확인 또는 접근 확인해주세요.")
-#         break
+while cap.isOpened():
+    success, frame = cap.read()
+    if not success:
+        print("CCTV URL 확인 또는 접근 확인해주세요.")
+        break
 
-#     result =google_alarm(frame)
+    result =google_alarm(frame)
 
-#     if result.email_sent:
-#         print("이메일 전송 완료")
-#         break
+    if result.email_sent:
+        print("이메일 전송 완료")
+        break
 
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         print("q키를 눌러서 종료")
-#         break
-# cap.release()
-# cv2.destroyAllWindows()
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        print("q키를 눌러서 종료")
+        break
+cap.release()
+cv2.destroyAllWindows()
 
 # ---
 # blur_on = True
@@ -247,26 +247,26 @@ assert cap.isOpened(), "CCTV URL 확인 또는 접근 확인해주세요."
 
 #---
 
-speed = solutions.SpeedEstimator(
-    model = "models/yolo11n.pt",
-    show = True,
-    max_speed = 120,
-    meter_per_pixel = 0.197,
-    classes = [2],
-    line_width = 3
-)
+# speed = solutions.SpeedEstimator(
+#     model = "models/yolo11n.pt",
+#     show = True,
+#     max_speed = 120,
+#     meter_per_pixel = 0.197,
+#     classes = [2],
+#     line_width = 3
+# )
 
-while cap.isOpened():
-    success, frame = cap.read()
-    if not success:
-        print("CCTV URL 확인 또는 접근 확인해주세요.")
-        break
+# while cap.isOpened():
+#     success, frame = cap.read()
+#     if not success:
+#         print("CCTV URL 확인 또는 접근 확인해주세요.")
+#         break
 
-    speed(frame)
+#     speed(frame)
 
-    if cv2.waitKey(5) & 0xFF == ord('q'):
-        print("q키를 눌러서 종료")
-        break
-cap.release()
+#     if cv2.waitKey(5) & 0xFF == ord('q'):
+#         print("q키를 눌러서 종료")
+#         break
+# cap.release()
 
 #---
